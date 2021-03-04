@@ -1,11 +1,11 @@
 version: '3.7'
 services: 
   details:
-    image: details
+    build: ./details
     ports:
       - "8080:8080"
   reviews:
-    image: reviews
+    build: ./reviews
     ports:
       - "9080:9080"
     environment:
@@ -13,7 +13,7 @@ services:
       ENABLE_RATINGS: "true"
       STAR_COLOR: blue
   ratings:
-    image: ratings
+    build: ./ratings
     ports:
       - "8081:8081"
     environment:
@@ -24,6 +24,6 @@ services:
     volumes:
       - "./ratings/databases:/docker-entrypoint-initdb.d"
   productpage:
-    image: productpage
+    build: ./productpage
     ports:
       - "8082:8082"
